@@ -26,13 +26,19 @@ TEST_TIMEOUT = 20  # seconds for the smoke test
 
 def ask(role_system: str, user: str) -> str:
     """Single-turn chat with a role system prompt."""
-    response = ollama.chat(
-        model=MODEL,
-        messages=[
-            {"role": "system", "content": role_system},
-            {"role": "user", "content": user},
-        ],
-    )
+    try:
+        response = ollama.chat(
+            model=MODEL,
+            messages=[
+                {"role": "system", "content": role_system},
+                {"role": "user", "content": user},
+            ],
+        )
+    except Exception as exc:  # noqa: BLE001  surface a controlled error to callers
+        raise RuntimeError(
+            "Failed to reach Ollama or fetch a chat response. "
+            "Is the Ollama daemon running and the model pulled?"
+        ) from exc
     return response["message"]["content"].strip()
 
 
@@ -133,7 +139,7 @@ def main() -> None:
     parser.add_argument("idea", nargs="*", help="App idea in plain English")
     args = parser.parse_args()
     idea = " ".join(args.idea) or input("App idea: ")
-    build(idea)
+    raise SystemExit(0 if build(idea) else 1)
 
 
 if __name__ == "__main__":

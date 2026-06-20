@@ -23,7 +23,7 @@ The point of difference here is the Tester. Most tutorial agents "test" code by 
 
 ## How it works
 
-```
+```text
         idea ("a CLI todo app with a json store")
                         |
                         v
@@ -60,7 +60,7 @@ The point of difference here is the Tester. Most tutorial agents "test" code by 
 
 ## Project structure
 
-```
+```text
 multi-agent-app-builder/
 ├── agent.py         # the five roles + orchestrator (MODEL/OUT/TEST_TIMEOUT config)
 ├── test_agent.py    # tests for the pure helpers + subprocess tester
@@ -97,7 +97,7 @@ Edit the constants at the top of `agent.py`:
 
 | Constant | Default | What it controls |
 |----------|---------|------------------|
-| `MODEL` | `qwen3-coder` | The Ollama model used by every role |
+| `MODEL` | `qwen3-coder:latest` | The Ollama model used by every role |
 | `OUT` | `output` | Directory for `app.py` and `build_log.md` |
 | `TEST_TIMEOUT` | `20` | Seconds the Tester waits before killing the subprocess |
 

@@ -96,7 +96,7 @@ The natural v2 of this project: let the Developer agent actually read the filesy
 
 Building this by hand taught me what the frameworks abstract: a multi-agent system is **roles + handoffs + an external verifier + bounded loops.** Everything LangGraph and CrewAI sell you is a nicer way to manage those four things at scale. Understand them in plain Python first; reach for the framework when you actually need the persistence, observability, and orchestration they provide.
 
-**Code:** [link your GitHub repo here]
+**Code:** [github.com/randhirmanekar15/multi-agent-app-builder](https://github.com/randhirmanekar15/multi-agent-app-builder)
 
 ---
 
